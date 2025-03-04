@@ -16,6 +16,9 @@
         </div>
         <div class="chat-wrapper">
             <div id="chat-container" class="chat-box" style="display: none;">
+                <div class="chat-header">
+                    <button onclick="logout()" class="btn logout-btn">Вийти</button>
+                </div>
                 <div id="messages" class="messages"></div>
                 <div class="input-area">
                     <input type="text" id="message" placeholder="Напишіть щось..." class="input-message">
@@ -25,7 +28,6 @@
             <div id="emoji-picker" class="emoji-picker" style="display: none;">
                 <h3>Мої картинки</h3>
                 <div class="emoji-list">
-                    <!-- Приклади ваших картинок -->
                     <img src="images/1.png" alt="smile" onclick="addImage('1')" class="custom-emoji">
                     <img src="images/2.png" alt="smile" onclick="addImage('2')" class="custom-emoji">
                     <img src="images/3.png" alt="smile" onclick="addImage('3')" class="custom-emoji">
@@ -42,7 +44,6 @@
                     <img src="images/14.png" alt="smile" onclick="addImage('14')" class="custom-emoji">
                     <img src="images/15.png" alt="smile" onclick="addImage('15')" class="custom-emoji">
                     <img src="images/16.png" alt="smile" onclick="addImage('16')" class="custom-emoji">
-                    <!-- Додайте сюди свої картинки -->
                 </div>
             </div>
         </div>

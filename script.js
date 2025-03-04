@@ -35,20 +35,36 @@ const firebaseConfig = {
       "14": "images/14.png",
       "15": "images/15.png",
       "16": "images/16.png"
-      // Додавайте сюди свої картинки, наприклад: "dog": "images/dog.png"
   };
   
   // Функція для входу в чат
   function startChat() {
       nickname = document.getElementById("nickname").value.trim();
       if (nickname) {
-          document.getElementById("nickname-container").style.display = "none";
-          document.getElementById("chat-container").style.display = "block";
-          document.getElementById("emoji-picker").style.display = "block";
-          loadMessages();
+          localStorage.setItem("chatNickname", nickname);
+          showChat();
       } else {
           alert("Введіть нікнейм!");
       }
+  }
+  
+  // Функція для відображення чату
+  function showChat() {
+      document.getElementById("nickname-container").style.display = "none";
+      document.getElementById("chat-container").style.display = "block";
+      document.getElementById("emoji-picker").style.display = "block";
+      loadMessages();
+  }
+  
+  // Функція для виходу
+  function logout() {
+      localStorage.removeItem("chatNickname"); // Видаляємо нікнейм із localStorage
+      document.getElementById("chat-container").style.display = "none";
+      document.getElementById("emoji-picker").style.display = "none";
+      document.getElementById("nickname-container").style.display = "block";
+      document.getElementById("nickname").value = ""; // Очищаємо поле
+      db.off("child_added"); // Вимикаємо слухач
+      document.getElementById("messages").innerHTML = ""; // Очищаємо чат
   }
   
   // Функція для відправки повідомлення
@@ -71,8 +87,6 @@ const firebaseConfig = {
           const data = snapshot.val();
           const messagesDiv = document.getElementById("messages");
           const messageElement = document.createElement("p");
-          
-          // Замінюємо текстові ідентифікатори на картинки
           let messageText = data.message;
           for (const [key, url] of Object.entries(imageMap)) {
               const regex = new RegExp(`:${key}:`, "g");
@@ -87,7 +101,7 @@ const firebaseConfig = {
   // Функція для додавання картинки в поле вводу
   function addImage(imageName) {
       const messageInput = document.getElementById("message");
-      messageInput.value += `:${imageName}:`; // Додаємо ідентифікатор, наприклад ":smile:"
+      messageInput.value += `:${imageName}:`;
       messageInput.focus();
   }
   
@@ -97,3 +111,12 @@ const firebaseConfig = {
           sendMessage();
       }
   });
+  
+  // Перевірка наявності збереженого нікнейму при завантаженні сторінки
+  window.onload = function() {
+      const savedNickname = localStorage.getItem("chatNickname");
+      if (savedNickname) {
+          nickname = savedNickname;
+          showChat();
+      }
+  };

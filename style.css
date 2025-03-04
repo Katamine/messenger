@@ -75,6 +75,21 @@ h1 {
     flex: 3;
 }
 
+.chat-header {
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+.logout-btn {
+    background: #ff4444; /* Червоний колір для "Вийти" */
+    padding: 8px 15px;
+    font-size: 14px;
+}
+
+.logout-btn:hover {
+    background: #ff6666;
+}
+
 .messages {
     height: 400px;
     overflow-y: auto;
@@ -95,7 +110,7 @@ h1 {
 
 .messages img {
     vertical-align: middle;
-    max-width: 24px; /* Розмір картинок у чаті */
+    max-width: 24px;
     height: auto;
 }
 
@@ -148,7 +163,7 @@ h1 {
 }
 
 .custom-emoji {
-    width: 32px; /* Розмір картинок у пікері */
+    width: 32px;
     height: 32px;
     cursor: pointer;
     transition: transform 0.2s ease;
