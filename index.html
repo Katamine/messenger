@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Месенджер</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+    <div class="container">
+        <div id="nickname-container" class="fade-in">
+            <h1>Ласкаво просимо до чату!</h1>
+            <input type="text" id="nickname" placeholder="Ваш нікнейм" class="input-nickname">
+            <button onclick="startChat()" class="btn">Увійти в чат</button>
+        </div>
+        <div id="chat-container" class="chat-box" style="display: none;">
+            <div id="messages" class="messages"></div>
+            <div class="input-area">
+                <input type="text" id="message" placeholder="Напишіть щось..." class="input-message">
+                <button onclick="sendMessage()" class="btn send-btn">Надіслати</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK (сумісна версія для глобального простору імен) -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
