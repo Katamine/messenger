@@ -14,16 +14,41 @@
             <input type="text" id="nickname" placeholder="Ваш нікнейм" class="input-nickname">
             <button onclick="startChat()" class="btn">Увійти в чат</button>
         </div>
-        <div id="chat-container" class="chat-box" style="display: none;">
-            <div id="messages" class="messages"></div>
-            <div class="input-area">
-                <input type="text" id="message" placeholder="Напишіть щось..." class="input-message">
-                <button onclick="sendMessage()" class="btn send-btn">Надіслати</button>
+        <div class="chat-wrapper">
+            <div id="chat-container" class="chat-box" style="display: none;">
+                <div id="messages" class="messages"></div>
+                <div class="input-area">
+                    <input type="text" id="message" placeholder="Напишіть щось..." class="input-message">
+                    <button onclick="sendMessage()" class="btn send-btn">Надіслати</button>
+                </div>
+            </div>
+            <div id="emoji-picker" class="emoji-picker" style="display: none;">
+                <h3>Мої картинки</h3>
+                <div class="emoji-list">
+                    <!-- Приклади ваших картинок -->
+                    <img src="images/1.png" alt="smile" onclick="addImage('1')" class="custom-emoji">
+                    <img src="images/2.png" alt="smile" onclick="addImage('2')" class="custom-emoji">
+                    <img src="images/3.png" alt="smile" onclick="addImage('3')" class="custom-emoji">
+                    <img src="images/4.png" alt="smile" onclick="addImage('4')" class="custom-emoji">
+                    <img src="images/5.png" alt="smile" onclick="addImage('5')" class="custom-emoji">
+                    <img src="images/6.png" alt="smile" onclick="addImage('6')" class="custom-emoji">
+                    <img src="images/7.png" alt="smile" onclick="addImage('7')" class="custom-emoji">
+                    <img src="images/8.png" alt="smile" onclick="addImage('8')" class="custom-emoji">
+                    <img src="images/9.png" alt="smile" onclick="addImage('9')" class="custom-emoji">
+                    <img src="images/10.png" alt="smile" onclick="addImage('10')" class="custom-emoji">
+                    <img src="images/11.png" alt="smile" onclick="addImage('11')" class="custom-emoji">
+                    <img src="images/12.png" alt="smile" onclick="addImage('12')" class="custom-emoji">
+                    <img src="images/13.png" alt="smile" onclick="addImage('13')" class="custom-emoji">
+                    <img src="images/14.png" alt="smile" onclick="addImage('14')" class="custom-emoji">
+                    <img src="images/15.png" alt="smile" onclick="addImage('15')" class="custom-emoji">
+                    <img src="images/16.png" alt="smile" onclick="addImage('16')" class="custom-emoji">
+                    <!-- Додайте сюди свої картинки -->
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Firebase SDK (сумісна версія для глобального простору імен) -->
+    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
     <script src="script.js"></script>

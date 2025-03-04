@@ -10,11 +10,10 @@ body {
 
 .container {
     width: 100%;
-    max-width: 600px;
+    max-width: 800px;
     padding: 20px;
 }
 
-/* Стилі для введення нікнейму */
 #nickname-container {
     text-align: center;
     background: rgba(255, 255, 255, 0.1);
@@ -46,7 +45,6 @@ h1 {
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
 }
 
-/* Стилі кнопок */
 .btn {
     padding: 12px 25px;
     border: none;
@@ -63,13 +61,18 @@ h1 {
     background: #00e0e6;
 }
 
-/* Стилі чату */
+.chat-wrapper {
+    display: flex;
+    gap: 20px;
+}
+
 .chat-box {
     background: rgba(255, 255, 255, 0.9);
     border-radius: 15px;
     padding: 20px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     animation: slide-up 0.5s ease;
+    flex: 3;
 }
 
 .messages {
@@ -88,6 +91,12 @@ h1 {
     border-radius: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     animation: fade-in 0.3s ease;
+}
+
+.messages img {
+    vertical-align: middle;
+    max-width: 24px; /* Розмір картинок у чаті */
+    height: auto;
 }
 
 .input-area {
@@ -117,7 +126,38 @@ h1 {
     background: #ff8c7f;
 }
 
-/* Анімації */
+.emoji-picker {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    flex: 1;
+    max-width: 200px;
+}
+
+.emoji-picker h3 {
+    margin: 0 0 10px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.emoji-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.custom-emoji {
+    width: 32px; /* Розмір картинок у пікері */
+    height: 32px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.custom-emoji:hover {
+    transform: scale(1.2);
+}
+
 @keyframes fade-in {
     from { opacity: 0; }
     to { opacity: 1; }

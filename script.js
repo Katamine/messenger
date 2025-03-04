@@ -17,12 +17,34 @@ const firebaseConfig = {
   // Змінна для зберігання нікнейму
   let nickname = "";
   
+  // Словник для співставлення назв картинок із їх URL
+  const imageMap = {
+      "1": "images/1.png",
+      "2": "images/2.png",
+      "3": "images/3.png",
+      "4": "images/4.png",
+      "5": "images/5.png",
+      "6": "images/6.png",
+      "7": "images/7.png",
+      "8": "images/8.png",
+      "9": "images/9.png",
+      "10": "images/10.png",
+      "11": "images/11.png",
+      "12": "images/12.png",
+      "13": "images/13.png",
+      "14": "images/14.png",
+      "15": "images/15.png",
+      "16": "images/16.png"
+      // Додавайте сюди свої картинки, наприклад: "dog": "images/dog.png"
+  };
+  
   // Функція для входу в чат
   function startChat() {
       nickname = document.getElementById("nickname").value.trim();
       if (nickname) {
           document.getElementById("nickname-container").style.display = "none";
           document.getElementById("chat-container").style.display = "block";
+          document.getElementById("emoji-picker").style.display = "block";
           loadMessages();
       } else {
           alert("Введіть нікнейм!");
@@ -49,10 +71,24 @@ const firebaseConfig = {
           const data = snapshot.val();
           const messagesDiv = document.getElementById("messages");
           const messageElement = document.createElement("p");
-          messageElement.textContent = `${data.nickname}: ${data.message}`;
+          
+          // Замінюємо текстові ідентифікатори на картинки
+          let messageText = data.message;
+          for (const [key, url] of Object.entries(imageMap)) {
+              const regex = new RegExp(`:${key}:`, "g");
+              messageText = messageText.replace(regex, `<img src="${url}" alt="${key}">`);
+          }
+          messageElement.innerHTML = `${data.nickname}: ${messageText}`;
           messagesDiv.appendChild(messageElement);
           messagesDiv.scrollTop = messagesDiv.scrollHeight;
       });
+  }
+  
+  // Функція для додавання картинки в поле вводу
+  function addImage(imageName) {
+      const messageInput = document.getElementById("message");
+      messageInput.value += `:${imageName}:`; // Додаємо ідентифікатор, наприклад ":smile:"
+      messageInput.focus();
   }
   
   // Відправка повідомлення по натисканню Enter
